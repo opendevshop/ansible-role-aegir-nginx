@@ -7,7 +7,7 @@
 
 - name: Symbolic link to Aegir's NGINX Config
   file:
-    src: /var/aegir/config/nginx.conf
+    src: "{{ aegir_user_home }}/config/nginx.conf"
     dest: "{{ nginx_conf_path }}/aegir.conf"
     state: link
     force: yes
