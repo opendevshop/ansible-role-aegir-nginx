@@ -19,5 +19,6 @@
     line: '{{ item }} ALL=NOPASSWD: {{ nginx_control }}'
     state: present
     validate: 'visudo -cf %s'
+    create: yes
   with_items:
     - aegir
