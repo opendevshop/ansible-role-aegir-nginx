@@ -1,0 +1,3 @@
+---
+# vars file for aegir.nginx on Debian
+nginx_control: /etc/init.d/nginx

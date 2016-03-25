@@ -1,0 +1,20 @@
+---
+# Enable Aegir to access as a remote user.
+
+- name: Symbolic link to Aegir's NGINX Config
+  file:
+    src: /var/aegir/config/nginx.conf
+    dest: "{{ nginx_conf_path }}/aegir.conf"
+    state: link
+    force: yes
+
+
+- name: Add aegir user to sudoers to reload NGINX
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^{{ item }}'
+    line: '{{ item }} ALL=NOPASSWD: {{ nginx_control }}'
+    state: present
+    validate: 'visudo -cf %s'
+  with_items:
+    - aegir
