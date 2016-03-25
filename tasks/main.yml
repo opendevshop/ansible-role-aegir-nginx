@@ -1,4 +1,8 @@
 ---
+# Variable setup.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
 # Enable Aegir to access as a remote user.
 
 - name: Symbolic link to Aegir's NGINX Config
@@ -7,7 +11,6 @@
     dest: "{{ nginx_conf_path }}/aegir.conf"
     state: link
     force: yes
-
 
 - name: Add aegir user to sudoers to reload NGINX
   lineinfile:
