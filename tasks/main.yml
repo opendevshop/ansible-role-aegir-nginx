@@ -14,7 +14,7 @@
 
 - name: Add aegir user to sudoers to reload NGINX
   lineinfile:
-    dest: /etc/sudoers
+    dest: '{{ sudoers_file_path }}'
     regexp: '^{{ item }}'
     line: '{{ item }} ALL=NOPASSWD: {{ nginx_control }}'
     state: present
