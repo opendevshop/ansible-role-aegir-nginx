@@ -22,3 +22,9 @@
     create: yes
   with_items:
     - aegir
+
+- name: Remove conflicting configuration from Geerlingguy's template.    server_names_hash_bucket_size 64;
+  lineinfile:
+    dest: '{{ nginx_conf_file_path }}'
+    line: '    server_names_hash_bucket_size 64;'
+    state: absent
