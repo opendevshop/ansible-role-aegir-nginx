@@ -23,6 +23,13 @@
   with_items:
     - aegir
 
+- name: Add aegir to nginx group.
+  when: aegir_user_in_web_group == 'yes'
+  user:
+    name: "{{ aegir_user_name }}"
+    groups: "{{ nginx_user }}"
+    append: yes
+
 - name: Remove conflicting configuration from Geerlingguy's template.    server_names_hash_bucket_size 64;
   lineinfile:
     dest: '{{ nginx_conf_file_path }}'
