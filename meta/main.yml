@@ -28,4 +28,3 @@ dependencies:
   - geerlingguy.php
   - geerlingguy.php-mysql
   - geerlingguy.composer
-  - geerlingguy.drush
