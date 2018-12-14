@@ -15,13 +15,11 @@
 - name: Add aegir user to sudoers to reload NGINX
   lineinfile:
     dest: '{{ sudoers_file_path }}'
-    regexp: '^{{ item }}'
-    line: '{{ item }} ALL=NOPASSWD: {{ nginx_control }}'
+    regexp: '^{{ nginx_control }}'
+    line: '{{ aegir }} ALL=NOPASSWD: {{ nginx_control }}'
     state: present
     validate: 'visudo -cf %s'
     create: yes
-  with_items:
-    - aegir
 
 - name: Add aegir to nginx group.
   when: aegir_user_in_web_group == 'yes'
